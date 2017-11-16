@@ -1,0 +1,5 @@
+include *.c
+include *.h
+include README.md
+include setup.*
+prune build
