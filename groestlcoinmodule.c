@@ -2,6 +2,11 @@
 
 #include "sph_groestl.h"
 
+#if _MSC_VER >= 1500
+typedef __int32 int32_t;
+typedef unsigned __int32 uint32_t;
+#endif
+
 static void GroestlCoinHash(const char *input, int length, char *output)
 {
     uint32_t hashA[16], hashB[16];
