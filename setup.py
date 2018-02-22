@@ -1,4 +1,4 @@
-from distutils.core import setup, Extension
+from setuptools import setup, Extension
 
 groestlcoin_hash_module = Extension('groestlcoin_hash', sources = ['groestlcoinmodule.c', 'groestl.c'])
 
