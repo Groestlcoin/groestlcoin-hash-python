@@ -1,8 +1,8 @@
 environment:
-  TWINE_USERNAME: bauerj
+  TWINE_USERNAME: groestlcoin
   # The encrypted password, used for deploying.
   TWINE_PASSWORD: 
-    secure: nJvSXE3tRtnBNSmQNZ0oZg==
+    secure: unGi58TyHfH2ZnUCMQr3sS9tNwrAoCPV6/r5vAnTaTU=
  
   matrix:
  
