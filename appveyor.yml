@@ -2,28 +2,12 @@ environment:
   TWINE_USERNAME: groestlcoin
   # The encrypted password, used for deploying.
   TWINE_PASSWORD: 
-    secure: unGi58TyHfH2ZnUCMQr3sS9tNwrAoCPV6/r5vAnTaTU=
+    secure: Z+9Fx9up7C5u+Uy8LrnE2w==
  
   matrix:
  
     # Pre-installed Python versions, which Appveyor may upgrade to
     # a later point release.
- 
-    - PYTHON: "C:\\Python27"
-      PYTHON_VERSION: "2.7.x"
-      PYTHON_ARCH: "32"
- 
-    - PYTHON: "C:\\Python27-x64"
-      PYTHON_VERSION: "2.7.x"
-      PYTHON_ARCH: "64"
- 
-    - PYTHON: "C:\\Python34"
-      PYTHON_VERSION: "3.4.x"
-      PYTHON_ARCH: "32"
- 
-    - PYTHON: "C:\\Python34-x64"
-      PYTHON_VERSION: "3.4.x"
-      PYTHON_ARCH: "64"
  
     - PYTHON: "C:\\Python35"
       PYTHON_VERSION: "3.5.x"
