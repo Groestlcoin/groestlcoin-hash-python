@@ -1,82 +1,98 @@
 environment:
   TWINE_USERNAME: groestlcoin
   # The encrypted password, used for deploying.
-  TWINE_PASSWORD: 
+  TWINE_PASSWORD:
     secure: Z+9Fx9up7C5u+Uy8LrnE2w==
- 
+
   matrix:
- 
+
     # Pre-installed Python versions, which Appveyor may upgrade to
     # a later point release.
- 
+
     - PYTHON: "C:\\Python35"
       PYTHON_VERSION: "3.5.x"
       PYTHON_ARCH: "32"
- 
+
     - PYTHON: "C:\\Python35-x64"
       PYTHON_VERSION: "3.5.x"
       PYTHON_ARCH: "64"
- 
+
     - PYTHON: "C:\\Python36"
       PYTHON_VERSION: "3.6.x"
       PYTHON_ARCH: "32"
- 
+
     - PYTHON: "C:\\Python36-x64"
       PYTHON_VERSION: "3.6.x"
       PYTHON_ARCH: "64"
-      
+
     - PYTHON: "C:\\Python37"
       PYTHON_VERSION: "3.7.x"
       PYTHON_ARCH: "32"
- 
+
     - PYTHON: "C:\\Python37-x64"
       PYTHON_VERSION: "3.7.x"
       PYTHON_ARCH: "64"
-      
+
     - PYTHON: "C:\\Python38"
       PYTHON_VERSION: "3.8.x"
       PYTHON_ARCH: "32"
- 
+
     - PYTHON: "C:\\Python38-x64"
       PYTHON_VERSION: "3.8.x"
       PYTHON_ARCH: "64"
- 
+
+    - PYTHON: "C:\\Python39"
+      PYTHON_VERSION: "3.9.x"
+      PYTHON_ARCH: "32"
+
+    - PYTHON: "C:\\Python39-x64"
+      PYTHON_VERSION: "3.9.x"
+      PYTHON_ARCH: "64"
+
+    - PYTHON: "C:\\Python310"
+      PYTHON_VERSION: "3.10.x"
+      PYTHON_ARCH: "32"
+
+    - PYTHON: "C:\\Python310-x64"
+      PYTHON_VERSION: "3.10.x"
+      PYTHON_ARCH: "64"
+
 init:
   - "ECHO Python %PYTHON_VERSION% (%PYTHON_ARCH%bit) from %PYTHON%"
- 
+
 install:
   - ECHO "Filesystem root:"
   - ps: "ls \"C:/\""
- 
+
   # Update Python PATH of this build (so pip is available, this cannot be
   # done from inside the powershell script as it would require to restart
   # the parent CMD process).
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
   - "python --version"
- 
+
   # Upgrade to the latest version of pip to avoid it displaying warnings
   # about it being out of date.
   - "pip install --disable-pip-version-check --user --upgrade pip"
- 
+
   # Install twine, support for 'bdist_wheel' and update setuptools.
   - "pip install --upgrade wheel setuptools twine"
- 
+
 build_script:
   - "python setup.py install"
- 
+
 test_script:
   # Build the compiled extension and run the project tests
   - "python test.py"
- 
+
 after_test:
   # If tests are successful, create binary packages for the project.
   - "python setup.py bdist_wheel"
   - ps: "ls dist"
- 
+
 artifacts:
   # Archive the generated packages in the ci.appveyor.com build report.
   - path: dist\*.whl
- 
+
 on_success:
   # If this is a new release (a new tag), upload to PyPi
-  - if "%APPVEYOR_REPO_TAG%"=="true" ( twine upload dist\*.whl ) 
+  - if "%APPVEYOR_REPO_TAG%"=="true" ( twine upload dist\*.whl )
