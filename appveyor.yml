@@ -1,8 +1,8 @@
 environment:
-  TWINE_USERNAME: groestlcoin
-  # The encrypted password, used for deploying.
+  TWINE_USERNAME:  __token__
+  # The encrypted password, used for deploying generated with https://ci.appveyor.com/tools/encrypt
   TWINE_PASSWORD:
-    secure: Z+9Fx9up7C5u+Uy8LrnE2w==
+    secure: nO20xH+fFg/LBHeFknfEKg33FJINwXN884ITK9T0lGi/vINUpQWX/4LxeOiKdr9pC9MsYCpHgBKF4dvEct6rcTh0FP/2CFQkaiNR+uXhiHLIyOkuZqZYW67N2xBttHKDyPRbgi//gqPZQMc4qi91YMSI+uyiqT4ISfaerzprGE8F6qZ5obrheo11awu2urQmKQTXZPW//BcUgJBfitZZ0fqx0F7QWWK5lf6z8ZMcilgpm40Uu1S94w/kBCVCzUCPocUxTDRFtWBoQ2IouqJhxLSkEuNzRsbCK62BnW6oYto=
 
   matrix:
 
