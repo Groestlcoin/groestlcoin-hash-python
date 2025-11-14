@@ -81,6 +81,14 @@ environment:
       PYTHON_VERSION: "3.13.x"
       PYTHON_ARCH: "64"
 
+    - PYTHON: "C:\\Python314"
+      PYTHON_VERSION: "3.14.x"
+      PYTHON_ARCH: "32"
+
+    - PYTHON: "C:\\Python314-x64"
+      PYTHON_VERSION: "3.14.x"
+      PYTHON_ARCH: "64"
+
 init:
   - "ECHO Python %PYTHON_VERSION% (%PYTHON_ARCH%bit) from %PYTHON%"
 
